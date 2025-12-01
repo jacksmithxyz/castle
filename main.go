@@ -19,9 +19,24 @@ paths := [
 
 
 func main() {
-	createConfigFile()
-	fmt.Println("Hello, World!")
-	(&cli.Command{}).Run(context.Background(), os.Args)
+	cmd := &cli.Command{
+        Usage: "declarative dotfile snapshots",
+        Commands: []*cli.Command{
+            {
+                Name:    "init",
+                Usage:   "Create a castle.yml file in the current working directory",
+                Action: func(ctx context.Context, cmd *cli.Command) error {
+					createConfigFile()
+                    fmt.Println("Created castle.yml")
+                    return nil
+                },
+            },
+        },
+    }
+
+    if err := cmd.Run(context.Background(), os.Args); err != nil {
+        log.Fatal(err)
+    }
 }
 
 func createConfigFile() {
