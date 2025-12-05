@@ -17,26 +17,25 @@ paths := [
     ];
 */
 
-
 func main() {
 	cmd := &cli.Command{
-        Usage: "declarative dotfile snapshots",
-        Commands: []*cli.Command{
-            {
-                Name:    "init",
-                Usage:   "Create a castle.yml file in the current working directory",
-                Action: func(ctx context.Context, cmd *cli.Command) error {
+		Usage: "declarative dotfile snapshots",
+		Commands: []*cli.Command{
+			{
+				Name:  "init",
+				Usage: "Create a castle.yml file in the current working directory",
+				Action: func(ctx context.Context, cmd *cli.Command) error {
 					createConfigFile()
-                    fmt.Println("Created castle.yml")
-                    return nil
-                },
-            },
-        },
-    }
+					fmt.Println("Created castle.yml")
+					return nil
+				},
+			},
+		},
+	}
 
-    if err := cmd.Run(context.Background(), os.Args); err != nil {
-        log.Fatal(err)
-    }
+	if err := cmd.Run(context.Background(), os.Args); err != nil {
+		log.Fatal(err)
+	}
 }
 
 func createConfigFile() {
@@ -49,19 +48,19 @@ func createConfigFile() {
 }
 
 func copyFiles() {
-    /*
-     * Read in paths from config file
-     * For path in paths, copy the files at designated locations into current directory
-     * Preserve directory structure
-     * Create hash of files and store in like .castle or something
-    */
+	/*
+	 * Read in paths from config file
+	 * For path in paths, copy the files at designated locations into current directory
+	 * Preserve directory structure
+	 * Create hash of files and store in like .castle or something
+	 */
 }
 
 func sync() {
-    /*
-     * Read in paths from config file 
-     * Check their contents and get hash
-     * If hash doesn't match file in current directory, recopy
-     * Print success/ failure message
-    */
+	/*
+	 * Read in paths from config file
+	 * Check their contents and get hash
+	 * If hash doesn't match file in current directory, recopy
+	 * Print success/ failure message
+	 */
 }
