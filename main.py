@@ -5,10 +5,20 @@ from pathlib import Path
 
 
 def create_config_file():
-    # TODO: Possibly improve this to add an empty starting structure
-    # to add config file paths.
-    path = Path("castle.json")
-    path.touch()
+    # TODO: If castle.json already exists, give warning to user before
+    # reinitializing it
+    with open("castle.json", "w") as f:
+        json.dump(
+            {
+                "paths": [
+                    ".config/nvim/init.lua",
+                    ".config/alacritty/alacritty.toml",
+                    ".zshrc",
+                ]
+            },
+            f,
+            indent=2,
+        )
 
 
 def copy_files():
