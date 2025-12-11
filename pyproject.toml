@@ -1,13 +1,13 @@
 [project]
-name = "castle"
-version = "0.1.0"
+name = "yeo"
+version = "0.1.0a1"
 description = "A declarative dotfiles snapshot tool"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = []
 
 [project.scripts]
-castle = "castle.main:main"
+yeo = "yeo.main:main"
 
 [build-system]
 requires = ["setuptools>=61.0"]
