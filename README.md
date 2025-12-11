@@ -13,7 +13,7 @@ While yeo is in active development and using a pre-release model, we recommend t
 1. Create a directory for your dotfiles to be managed.
 2. Run `uvx yeo init` from inside of the directory. This will create a `yeo.json` file.
 3. Open the `yeo.json` file and replace the specified paths with your desired dotfiles. Paths assume a starting `~/` directory and work from there.
-4. Run `uvx yeo sync` to sync your dotfiles
+4. Run `uvx yeo sync` to sync your dotfiles.
 
 That's it!
 
