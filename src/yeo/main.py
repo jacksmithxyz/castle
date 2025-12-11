@@ -50,7 +50,6 @@ def main():
 
     subparsers.add_parser("init", help="Create a yeo.json file")
     subparsers.add_parser("sync", help="Sync your dotfiles to the current directory")
-    subparsers.add_parser("hello", help="Sync your dotfiles to the current directory")
 
     args = parser.parse_args()
 
@@ -58,8 +57,6 @@ def main():
         create_config_file()
     elif args.command == "sync":
         copy_files()
-    elif args.command == "hello":
-        print("Hello world!")
 
 
 if __name__ == "__main__":
