@@ -15,18 +15,24 @@ DEFAULT_CONFIG = {
 }
 
 
-def create_config_file():
-    if Path("yeo.json").exists():
-        response = input("yeo.json already exists. Overwrite? (y/n): ")
-        if response.lower() != "y":
-            print("File not written.")
-            return
-
+def create_default_config():
     with open("yeo.json", "w") as f:
         json.dump(DEFAULT_CONFIG, f, indent=2)
         f.write("\n")
-
     print("yeo.json created.")
+
+
+def create_config_file():
+    if not Path("yeo.json").exists():
+        create_default_config()
+    else:
+        with open("yeo.json", "r", encoding="utf-8") as f:
+            config = json.load(f)
+        if config["overwrite"] is True:
+            create_default_config()
+            print("Overwritten config with default configuration file.")
+        else:
+            print("Overwritten set to false. File not written.")
 
 
 def get_file_hash(file_path):
